@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: staticcv
+  name: staticcv
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: staticcv
+  template:
+    metadata:
+      labels:
+        app: staticcv
+    spec:
+      containers:
+      - image: bezhav/static_cv:v1
+        name: staticcv
+        ports:
+        - containerPort: 80
+          name: staticcv
